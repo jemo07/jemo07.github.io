@@ -13,22 +13,22 @@ FORTH commands can be classified into two types: primitive and compound. Primiti
 |        FORTH System               |  
 |                                   |
 |  +-----------------------------+  | 
-|  |        Commands            |  |
+|  |        Commands             |  |
 |  |                             |  |
-|  |   +---------------------+  |  |
-|  |   |     Command         |  |  |
-|  |   |                     |  |  |
-|  |   |   Link  ---> *------|--|  |
-|  |   |   Name  ---> "Name" |  |  |
-|  |   |   Code  ---> {Exec} |  |  |
-|  |   |   Param ---> [Data] |  |  |
-|  |   +---------------------+  |  |
+|  |    +---------------------+  |  |
+|  |    |     Command         |  |  |
+|  |    |                     |  |  |
+|  |    |   Link  ---> *------|--|  |
+|  |    |   Name  ---> "Name" |  |  |
+|  |    |   Code  ---> {Exec} |  |  |
+|  |    |   Param ---> [Data] |  |  |
+|  |    +---------------------+  |  |
 |  +-----------------------------+  |
 |                                   |
 |   +--------------------------+    |
 |   |   Text Interpreter       |    |
 |   |                          |    |
-|   |  Interpreting  <--> Compiling |
+|   |  Interpreting <--> Compiling  |
 |   +--------------------------+    |
 |                                   |
 |   +--------------------------+    |
