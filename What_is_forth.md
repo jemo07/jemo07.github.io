@@ -1,45 +1,21 @@
 # Exploring FORTH: A Unique Language and Its Functionalities
 
-FORTH, an innovative programming language, is fundamentally a list processor. It leverages an intricate set of commands and an interpreter to systematically process lists of commands. These commands act as individual records, stored in memory within a structure known as a dictionary.
+Forth is a programming language that operates through a virtual machine known as the Forth-VM. This virtual machine is made up of two main components: the interpreter and the dictionary.
 
-Each command, or 'word' in FORTH parlance, within this dictionary is composed of several fields. Firstly, there's a link field which weaves together the commands, forming the comprehensive dictionary. Secondly, there is a name field, storing the unique name of commands in ASCII. Next is a code field, containing the executable code and any necessary data to perform the specific function for this command. Optionally, a parameter field may be included, carrying additional data required by the command.
+The interpreter in Forth is divided into two parts: the "inner interpreter" and the "outer interpreter". These interpreters process lists of commands, which are stored in the dictionary.
 
-The unique construct of link and name fields allows the interpreter to swiftly lookup a command in the dictionary, while the code field furnishes the executable code to perform the function tied to this command. Notably, a FORTH command possesses two representations: an external, ASCII-based name, and an internal token, which invokes executable code stored in the code field. While in many FORTH systems, the token is an address, it can also assume different forms according to the particular requirements of the implementation.
+The dictionary in Forth is a memory storage area where commands, also known as records, are kept. Each record has three main fields: a link field, a name field, and a code field. Some records may also have an optional parameter field. The link and name fields help the interpreter to find a command in the dictionary, while the code field holds the executable code that carries out the function of the command.
 
-FORTH commands can be classified into two types: primitive and compound. Primitive commands contain machine code in their code fields, whereas compound commands house token lists.
+Commands in Forth have two forms: an external form which is the ASCII name of the command, and an internal form which is a token that triggers the executable code stored in the code field. The token is often an address, but it can take other forms depending on the implementation needs.
 
-```
-+-----------------------------------+           
-|        FORTH System               |  
-|                                   |
-|  +-----------------------------+  | 
-|  |        Commands             |  |
-|  |                             |  |
-|  |    +---------------------+  |  |
-|  |    |     Command         |  |  |
-|  |    |                     |  |  |
-|  |    |   Link  ---> *------|--|  |
-|  |    |   Name  ---> "Name" |  |  |
-|  |    |   Code  ---> {Exec} |  |  |
-|  |    |   Param ---> [Data] |  |  |
-|  |    +---------------------+  |  |
-|  +-----------------------------+  |
-|                                   |
-|   +--------------------------+    |
-|   |   Text Interpreter       |    |
-|   |                          |    |
-|   |  Interpreting <--> Compiling  |
-|   +--------------------------+    |
-|                                   |
-|   +--------------------------+    |
-|   |   Token Interpreter      |    |
-|   +--------------------------+    |
-|                                   |
-+-----------------------------------+
-```
+Forth commands can be categorized into two types: "primitive" commands that contain machine code, and "compound" commands that contain lists of tokens in their code fields.
 
-Interpreters in FORTH function on two levels: a text interpreter, also known as the outer interpreter, and a token interpreter or the inner interpreter. The text interpreter processes lists of FORTH commands represented in text, without limitations to the number of commands in a text list. On the other hand, the token interpreter processes lists of tokens embedded in compound commands. Often referred to as the address interpreter, tokens in many FORTH systems are addresses directing to code fields.
+The Forth interpreter processes two types of lists: text lists and token lists. Text lists are sequences of Forth command names or "words", separated by white spaces and ended with a carriage return. Token lists, on the other hand, are sequences of tokens, which are the internal representations of Forth commands.
 
-The text interpreter operates in two distinct modes: interpreting and compiling. In the interpreting mode, a list of command names is parsed and executed. However, in compiling mode, the list of command names is parsed and the corresponding tokens are compiled into a token list. This token list can be assigned a name, giving rise to a new compound command by creating a new command record in the dictionary.
+The text interpreter, also known as the "outer interpreter", processes lists of Forth commands represented in text. The token interpreter, also known as the "inner interpreter", processes lists of tokens contained in compound commands.
+
+The text interpreter can operate in two modes: interpreting mode and compiling mode. In interpreting mode, a list of command names is interpreted, meaning the commands are parsed and executed. In compiling mode, a list of command names is compiled, meaning the commands are parsed and the corresponding tokens are compiled into a token list. This token list can then be given a name to form a new compound command, by creating a new command record in the dictionary.
+
+The Forth compiler is part of the Forth-VM text interpreter operating in compiling mode. It compiles new compound commands, converting a text list of Forth commands into an equivalent token list. It builds nested token lists one on top of the other, until a final solution is reached in the last token list.
 
 Herein lies the core of FORTH's power - its compiler. Forth is a FORTH Language Text Compiler that operates in compiling mode. Its purpose is to compile new compound commands, converting a text list of FORTH commands into an equivalent token list. It works by constructing nested token lists one atop another until the final solution is reached in the last token list. This robust process characterizes FORTH's flexibility and efficiency, truly distinguishing it as a unique and powerful programming language.
