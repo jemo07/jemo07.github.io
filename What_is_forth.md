@@ -2,6 +2,8 @@
 
 Forth is a programming language that operates through a virtual machine known as the Forth-VM. This virtual machine is made up of two main components: the interpreter and the dictionary.
 
+<img src="FORTVM_IMG.svg" width="400">
+
 The interpreter in Forth is divided into two parts: the "inner interpreter" and the "outer interpreter". These interpreters process lists of commands, which are stored in the dictionary.
 
 The dictionary in Forth is a memory storage area where commands, also known as records, are kept. Each record has three main fields: a link field, a name field, and a code field. Some records may also have an optional parameter field. The link and name fields help the interpreter to find a command in the dictionary, while the code field holds the executable code that carries out the function of the command.
