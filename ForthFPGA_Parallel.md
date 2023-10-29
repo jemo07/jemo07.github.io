@@ -173,7 +173,7 @@ In this scenario, micro chiplets facilitate the concurrent execution of instruct
 
 Here is a clock representation of the excution of the paralleized execution leveragin the execution counter. 
 
-//IMAGE HERE. 
+![alt text](wavedrom.png)
 
 ---
 
